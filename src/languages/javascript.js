@@ -11,7 +11,8 @@ function(hljs) {
       'instanceof with throw case default try this switch continue typeof delete ' +
       'let yield const export super debugger as async await static ' +
       // ECMAScript 6 modules import
-      'import from as'
+      'import from as' +
+      ' mutable viewof'
     ,
     literal:
       'true false null undefined NaN Infinity',
@@ -23,7 +24,8 @@ function(hljs) {
       'Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array ' +
       'Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require ' +
       'module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect ' +
-      'Promise'
+      'Promise' +
+      ' DOM Files Generators html md mutable now Mutable Promises require resolve svg tex width'
   };
   var EXPRESSIONS;
   var NUMBER = {

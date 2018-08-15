@@ -1,5 +1,5 @@
 {
-  "name": "highlight.js",
+  "name": "@observablehq/highlight.js",
   "description": "Syntax highlighting with language autodetection.",
   "keywords": [
     "highlight",
@@ -15,13 +15,18 @@
   "bugs": {
     "url": "https://github.com/highlightjs/highlight.js/issues"
   },
+  "files": [
+    "build"
+  ],
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "git://github.com/highlightjs/highlight.js.git"
   },
-  "main": "./lib/index.js",
+  "main": "./build/highlight.pack.js",
+  "unpkg": "./build/highlight.pack.js",
   "scripts": {
+    "prepublish": "node tools/build.js javascript json css xml",
     "test": "./node_modules/.bin/mocha test/",
     "test-browser": "./node_modules/.bin/mocha test/browser/"
   },
