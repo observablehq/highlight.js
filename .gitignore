@@ -1,4 +1,5 @@
 .DS_Store
+highlight.min.js
 build
 docs/_build
 .idea/
