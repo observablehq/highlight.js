@@ -6,7 +6,7 @@
     "syntax"
   ],
   "homepage": "https://highlightjs.org/",
-  "version": "1.1.0-rc2",
+  "version": "1.1.0-rc3",
   "author": {
     "name": "Ivan Sagalaev",
     "email": "maniac@softwaremaniacs.org"
@@ -23,8 +23,8 @@
     "type": "git",
     "url": "git://github.com/highlightjs/highlight.js.git"
   },
-  "main": "./build/highlight.pack.js",
-  "unpkg": "./build/highlight.pack.js",
+  "main": "highlight.min.js",
+  "unpkg": "highlight.min.js",
   "scripts": {
     "prepublish": "node tools/build.js javascript json css xml && mv build/highlight.pack.js highlight.min.js",
     "test": "./node_modules/.bin/mocha test/",
