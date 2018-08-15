@@ -25,7 +25,7 @@ function(hljs) {
       'Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require ' +
       'module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect ' +
       'Promise' +
-      ' DOM Files Generators html md mutable now Mutable Promises require resolve svg tex width fetch'
+      ' DOM Files Generators html md now Mutable Promises require resolve svg tex width fetch'
   };
   var EXPRESSIONS;
   var NUMBER = {
