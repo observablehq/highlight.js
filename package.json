@@ -16,7 +16,8 @@
     "url": "https://github.com/highlightjs/highlight.js/issues"
   },
   "files": [
-    "highlight.min.js"
+    "highlight.min.js",
+    "async-languages"
   ],
   "license": "BSD-3-Clause",
   "repository": {
@@ -26,7 +27,7 @@
   "main": "highlight.min.js",
   "unpkg": "highlight.min.js",
   "scripts": {
-    "prepublish": "node tools/build.js javascript json css xml && mv build/highlight.pack.js highlight.min.js",
+    "prepublish": "node tools/build.js javascript json css xml && mv build/highlight.pack.js highlight.min.js && node tools/async-languages",
     "mocha": "mocha",
     "test": "mocha --globals document test",
     "test-browser": "mocha --globals document test/browser"
