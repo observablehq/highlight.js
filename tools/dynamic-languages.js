@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 
 try {
   fs.mkdirSync("./async-languages");
@@ -10,6 +11,8 @@ function getRequires(f) {
     return requires[1].split(",").map(r => r.trim());
   }
 }
+
+let languageMap = {};
 
 for (let language of fs.readdirSync("./src/languages")) {
   let f = fs.readFileSync(`./src/languages/${language}`, "utf8");
@@ -28,5 +31,22 @@ for (let language of fs.readdirSync("./src/languages")) {
     f = f.replace("function(hljs) {", "export default function(hljs) {");
   }
 
+  let aliases = [path.basename(language, ".js")];
+  const specifiedAliases = f.match(/\baliases: \[([^\]]*)\]/);
+  if (specifiedAliases) {
+    aliases.push(
+      ...specifiedAliases[1].split(",").map(s => s.replace(/'/g, "").trim())
+    );
+  }
+
+  for (let alias of aliases) {
+    languageMap[alias] = language;
+  }
+
   fs.writeFileSync(`./async-languages/${language}`, f);
 }
+
+fs.writeFileSync(
+  "./async-languages/index.js",
+  `export default ${JSON.stringify(languageMap)}`
+);
