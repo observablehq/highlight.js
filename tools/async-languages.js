@@ -8,7 +8,7 @@ try {
 function getRequires(f) {
   const requires = f.match(/\nRequires:(.*)/);
   if (requires) {
-    return requires[1].split(",").map(r => "./" + r.trim());
+    return requires[1].split(",").map(r => r.trim());
   }
   return [];
 }
@@ -21,7 +21,19 @@ for (let language of fs.readdirSync("./src/languages")) {
   f =
     f.replace(
       "function(hljs) {",
-      `define(${JSON.stringify(requires)}, () => function(hljs) {`
+      `define(${JSON.stringify(
+        requires.map(r => "./" + r)
+      )}, (...$$requiredLanguages) => function(hljs) {
+        ${requires
+          .map(
+            (r, i) =>
+              `hljs.addLanguage(${JSON.stringify(
+                path.basename(r, ".js")
+              )}, $$requiredLanguages[${i}]);`
+          )
+          .join("\n")}
+          
+          `
     ) + ")";
 
   let aliases = [path.basename(language, ".js")];
