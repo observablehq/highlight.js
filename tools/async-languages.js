@@ -27,7 +27,7 @@ for (let language of fs.readdirSync("./src/languages")) {
         ${requires
           .map(
             (r, i) =>
-              `hljs.addLanguage(${JSON.stringify(
+              `hljs.registerLanguage(${JSON.stringify(
                 path.basename(r, ".js")
               )}, $$requiredLanguages[${i}]);`
           )
