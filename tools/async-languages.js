@@ -41,5 +41,5 @@ for (let language of fs.readdirSync("./src/languages")) {
 
 fs.writeFileSync(
   "./async-languages/index.js",
-  `export default new Map(${JSON.stringify(Object.entries(languageMap))})`
+  `define(() => new Map(${JSON.stringify(Object.entries(languageMap))}))`
 );
